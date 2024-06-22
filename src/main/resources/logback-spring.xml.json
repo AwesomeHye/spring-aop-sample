@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+json 로그 출력을 체험하고 싶다면 이 파일명을 logback-spring.xml 로 변경하세요.
+-->
+<configuration debug="true">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <!--timestamp 필드-->
+                <timestamp>
+                    <fieldName>timestamp</fieldName>
+                    <pattern>yyyy-MM-dd HH:mm:ss.SSS</pattern>
+                </timestamp>
+
+                <!--@version 필드-->
+                <version/>
+
+                <!--message 필드-->
+                <pattern>
+                    <pattern>
+                        {
+                        "message": "[%class{0}][%M:%L] %m"
+                        }
+                    </pattern>
+                </pattern>
+
+                <!--logger_name 필드-->
+                <loggerName/>
+
+                <!--thread 필드-->
+                <threadName>
+                    <fieldName>thread</fieldName>
+                </threadName>
+
+                <!--level 필드-->
+                <logLevel/>
+
+                <!--level_value 필드-->
+                <logLevelValue/>
+
+                <!--exception 필드-->
+                <stackTrace>
+                    <fieldName>exception</fieldName>
+                </stackTrace>
+
+                <!--mdc 필드-->
+                <mdc>
+                    <fieldName>mdc</fieldName>
+                </mdc>
+
+                <!--mdc 필드에 현재 context 추가-->
+                <context/>
+
+                <!--caller_class_name, caller_method_name, caller_file_name, caller_line_number 필드-->
+                <callerData/>
+            </providers>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

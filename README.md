@@ -1,0 +1,3 @@
+- 애노테이션 기반 로그 출력: 코드 그대로 실행
+- logback 기반 로그 출력: [logback-spring.xml.defaultencoder](src%2Fmain%2Fresources%2Flogback-spring.xml.defaultencoder) 파일명을 `logback-spring.xml` 로 변경 후 실행
+- json 로그 출력: [logback-spring.xml.jsonencoder](src%2Fmain%2Fresources%2Flogback-spring.xml.jsonencoder) 파일명을 `logback-spring.xml` 로 변경 후 실행
